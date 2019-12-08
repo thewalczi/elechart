@@ -2,11 +2,10 @@ import React, {useContext } from 'react';
 import { ChartDataContext } from '../contexts/ChartData.context';
 
 const Bar = (props) => {
-    const {chartSize, maxValue} = useContext(ChartDataContext)
+    const { maxValue } = useContext(ChartDataContext);
 
     let setBarHeight = (value) => {
         let barHeight = value < 0 ? -(value / maxValue) * 100: (value / maxValue) * 100;
-        console.log(barHeight);
         return barHeight + '%';
     }
 

@@ -28,14 +28,13 @@ const ChartDataContextProvider = (props) => {
     useEffect(() => {
         let valueArr = [];
         data.map(item => {
-            valueArr.push(item.value);
+            return valueArr.push(item.value);
         })
-        console.log(valueArr);
         
         setMinValue(Math.min(...valueArr));
         setMaxValue(Math.max(...valueArr));
         
-    })
+    }, [data])
     
     const AddData = (name, value) => {
         setData([...data, {name: name, value: value, id: uuid()}])
