@@ -7,18 +7,28 @@ const ChartDataContextProvider = (props) => {
     const [data, setData] = useState([
         {
             name: 'data1',
-            value: 20,
+            value: 2,
             id: 1
         },
         {
             name: 'data2',
-            value: 30,
+            value: 3,
             id: 2
         },
         {
             name: 'data3',
-            value: -10,
+            value: -1,
             id: 3
+        },
+        {
+            name: 'data5',
+            value: 4,
+            id: 4
+        },
+        {
+            name: 'data3',
+            value: -3,
+            id: 5
         }
     ]);
 
@@ -35,6 +45,8 @@ const ChartDataContextProvider = (props) => {
         setMaxValue(Math.max(...valueArr));
         
     }, [data])
+
+    let hasNegative = minValue < 0 ? true : false;
     
     const AddData = (name, value) => {
         setData([...data, {name: name, value: value, id: uuid()}])
@@ -43,7 +55,7 @@ const ChartDataContextProvider = (props) => {
 
 
     return (
-        <ChartDataContext.Provider value={{data, maxValue, minValue, AddData}}>
+        <ChartDataContext.Provider value={{data, maxValue, minValue, hasNegative, AddData}}>
             {props.children}
         </ChartDataContext.Provider>
     );

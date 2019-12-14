@@ -4,14 +4,16 @@ import Bar from './Bar.component';
 
 const Chart = () => {
     
-    const { data, minValue, maxValue } = useContext(ChartDataContext)
-    let chartHeight = {
-        height: minValue < 0 ? maxValue / (-minValue + maxValue) * 100 + '%' : '100%'
+    const { data, minValue, maxValue, hasNegative } = useContext(ChartDataContext)
+
+    let chartHeight = hasNegative ? maxValue / (-minValue + maxValue) * 100 : 100;
+    let chartStyle = {
+        height: chartHeight + '%'
     };
 
     return (
         <div className="chart-outer">
-            <div style={chartHeight} className="chart-inner">
+            <div style={chartStyle} className="chart-axis">
                 {data.map(item => {
                     return <Bar key={item.id} item={item}/>
                 })}
