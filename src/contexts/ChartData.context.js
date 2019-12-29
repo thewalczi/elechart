@@ -6,20 +6,21 @@ export const ChartDataContext = createContext();
 const ChartDataContextProvider = (props) => {
     const [data, setData] = useState([
 
-        {
-            name: 'data3',
-            value: -3,
-            id: 5
-        }
+        // {
+        //     name: 'data3',
+        //     value: 3,
+        //     id: 5
+        // }
     ]);
 
     const [minValue, setMinValue] = useState('');
     const [maxValue, setMaxValue] = useState('');
     const [scale, setScale] = useState([]);
     const [chartHeight, setChartHeight] = useState('');
+    const [indexValue, setIndexValue] = useState('');
 
-    let hasNegative = minValue < 0 ? true : false;
-    let hasPositive = maxValue >= 0 ? true : false;
+    let hasNegativeValues = minValue < 0 ? true : false;
+    let hasPositiveValues = maxValue >= 0 ? true : false;
 
     useEffect(() => {
         let valueArr = [];
@@ -33,28 +34,23 @@ const ChartDataContextProvider = (props) => {
     }, [data])
 
     useEffect(() => {
-        if(hasNegative && hasPositive){
+        if(hasNegativeValues && hasPositiveValues){
             setChartHeight(maxValue / (-minValue + maxValue) * 100);
-        }
-        else if(hasNegative && !hasPositive){
-            setChartHeight(0);
         }
         else {
             setChartHeight(100);
         }
-    })
+    }, [hasNegativeValues, hasPositiveValues, maxValue, minValue]);
 
-    useEffect(() => { //scale on Y axis
-        let indexValue = Math.abs(minValue) > Math.abs(maxValue) ? {value: Math.abs(minValue), positive: false} : {value: Math.abs(maxValue), positive: true};
-        let chartContainerHeight = document.querySelector('.chart-container').offsetHeight;
-        console.log(indexValue);
-        if (indexValue.value <= 10) {
-            let indexScale = hasNegative && !hasPositive ? chartContainerHeight/Math.ceil(minValue) : chartContainerHeight/Math.ceil(maxValue);
-            let initValue = hasNegative ? Math.ceil(minValue) : 0;
-            let topScale = maxValue < 0 ? 0 : maxValue;
-            let array = [];
-            console.log(indexScale);
-            console.log(chartContainerHeight);
+    let dynamicScale = async () => { //dynamic scale render on Y axis
+        await setIndexValue(Math.abs(minValue) > Math.abs(maxValue) ? Math.abs(minValue) : Math.abs(maxValue));
+        let chartContainerHeight = await document.querySelector('.chart-content').offsetHeight;
+        let indexScale = await hasNegativeValues && !hasPositiveValues ? chartContainerHeight/Math.ceil(minValue) : chartContainerHeight/Math.ceil(maxValue);
+        let initValue = await hasNegativeValues ? Math.ceil(minValue) : 0;
+        let topScale = await maxValue < 0 ? 0 : maxValue;
+        let array = await [];
+
+        if (indexValue <= 10) {
 
             for(let i = initValue; i <= topScale; i++){
                 let data = {value: i, height: Math.abs(indexScale) * i}
@@ -62,12 +58,16 @@ const ChartDataContextProvider = (props) => {
             }
             setScale(array)
 
-        } else if (maxValue > 10 && maxValue < 100) {
+        } else if (indexValue > 10 && indexValue <= 100) {
             console.log('between 10 and 100');
-        } else {
+        } else if (indexValue > 100) {
             console.log('more than 100');
         }
-    }, [maxValue, minValue]);
+    }
+
+    useEffect(() => { 
+       dynamicScale();
+    }, [maxValue, minValue, indexValue])
 
     
     const AddData = (name, value) => {
@@ -77,7 +77,19 @@ const ChartDataContextProvider = (props) => {
 
 
     return (
-        <ChartDataContext.Provider value={{data, maxValue, minValue, hasNegative, hasPositive, AddData, scale, chartHeight}}>
+        <ChartDataContext.Provider
+            value={{
+                data,
+                maxValue,
+                minValue,
+                hasNegativeValues,
+                hasPositiveValues,
+                AddData,
+                scale,
+                chartHeight,
+                indexValue
+            }}
+        >
             {props.children}
         </ChartDataContext.Provider>
     );

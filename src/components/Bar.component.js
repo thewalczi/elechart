@@ -2,12 +2,13 @@ import React, {useContext } from 'react';
 import { ChartDataContext } from '../contexts/ChartData.context';
 
 const Bar = (props) => {
-    const { maxValue, hasPositive } = useContext(ChartDataContext);
+    const { maxValue, indexValue, hasPositiveValues } = useContext(ChartDataContext);
 
     let setBarHeight = (value) => {
-        let barHeight = (value / maxValue) * 100;
+        let barHeight = (value / (hasPositiveValues ? maxValue : indexValue)) * 100;
         return barHeight + '%';
     }
+
 
     return (
         <div className="bar-container">

@@ -4,9 +4,7 @@ import Bar from './Bar.component';
 
 const Chart = () => {
     
-    const { data, minValue, maxValue, hasNegative, chartHeight } = useContext(ChartDataContext)
-
-    console.log(chartHeight); 
+    const { data, hasPositiveValues, chartHeight } = useContext(ChartDataContext);
     
     let chartStyle = {
         height: chartHeight + '%'
@@ -14,12 +12,14 @@ const Chart = () => {
 
     return (
         <div className="chart">
-            <div style={chartStyle} className="chart-container">
-                <ChartScale/>
-                <div className="chart-bars">
-                    {data.map(item => {
-                        return <Bar key={item.id} item={item}/>
-                    })}
+            <div className={`chart-container ${!hasPositiveValues ? 'only-negatives' : ''}`}>
+                <div style={chartStyle} className="chart-content">                   
+                    <ChartScale/>
+                    <div className="chart-bars">
+                        {data.map(item => {
+                            return <Bar key={item.id} item={item}/>
+                        })}
+                    </div>
                 </div>
             </div>
         </div>
@@ -29,11 +29,12 @@ const Chart = () => {
 
 const ChartScale = () => {
     const { scale } = useContext(ChartDataContext);
-    console.log(scale);
+
     return (
-        <div className="chart-axis-y">
+        <div className="chart-scale">
+            <div className="chart-x-axis"></div>
             {scale.map((item, i) => (
-            <div key={i} className="chart-axis-y-value" style={{bottom: item.height +'px'}}>
+            <div key={i} className="chart-scale-value" style={{bottom: item.height +'px'}}>
                 <span>
                     {item.value}
                 </span>

@@ -11,7 +11,7 @@ const DataForm = () => {
         setName('');
         setValue('');
     }
-    const disableButton = name == '' || value == '' ? 'disable' : '';
+    const disableButton = name === '' || value === '' ? 'disable' : '';
 
     return (
         <form onSubmit={handleSubmit}>
