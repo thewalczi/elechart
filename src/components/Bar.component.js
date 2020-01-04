@@ -2,17 +2,23 @@ import React, {useContext } from 'react';
 import { ChartDataContext } from '../contexts/ChartData.context';
 
 const Bar = (props) => {
-    const { maxValue } = useContext(ChartDataContext);
+    const { maxValue, indexValue, hasPositiveValues } = useContext(ChartDataContext);
 
     let setBarHeight = (value) => {
-        let barHeight = value < 0 ? -(value / maxValue) * 100: (value / maxValue) * 100;
+        let barHeight = (value / (hasPositiveValues ? maxValue : indexValue)) * 100;
         return barHeight + '%';
     }
 
+
     return (
         <div className="bar-container">
-            <div className={`bar ${props.item.value < 0 ? 'negative' : ''}`} style={{height: `${setBarHeight(props.item.value)}`}}>
-                <span>{props.item.value}</span>
+            <div 
+                className={`bar ${props.item.value < 0 ? 'negative' : ''}`}
+                style={{height: `${setBarHeight(Math.abs(props.item.value))}`}}
+            >
+                <span>
+                    {props.item.value}
+                </span>
             </div>
         </div>
     );

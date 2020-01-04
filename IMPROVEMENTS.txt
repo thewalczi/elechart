@@ -1,0 +1,11 @@
+IMPROVEMENTS
+
+    **DONE** DynamicScale working only up to specific amount of values on scale (prevent unreadability with stacked scale values),
+    **DONE** Refactoring of the DynamicScale code in ChartData.context file,
+    *Clean Style file,
+    *New styling for whole app,
+
+
+BUGS
+
+*Negative values are sometimes not aligned with the scale (1px difference)

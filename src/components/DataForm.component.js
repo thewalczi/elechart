@@ -11,11 +11,13 @@ const DataForm = () => {
         setName('');
         setValue('');
     }
+    const disableButton = name === '' || value === '' ? 'disable' : '';
+
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" className="form-name" value={name}placeholder="Name" onChange={(e) => setName(e.target.value)}/>
+            <input type="text" className="form-name" value={name} placeholder="Name" onChange={(e) => setName(e.target.value)}/>
             <input type="number"  className="form-value" value={value} placeholder="Value" onChange={(e) => setValue(e.target.value)}/>
-            <input type="submit" value="Add"/>
+            <input type="submit" disabled={disableButton} value="Add"/>
         </form>
     );
 }

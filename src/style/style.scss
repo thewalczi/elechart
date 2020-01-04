@@ -7,7 +7,7 @@ div, p, h1, h2, h3, h4, h5, h6, span, ul, li, form, input, button {
     box-sizing: border-box;
 }
 
-.chart-outer {
+.chart {
     width: 800px;
     height: 500px;
     background: #eee;
@@ -24,17 +24,65 @@ div, p, h1, h2, h3, h4, h5, h6, span, ul, li, form, input, button {
         margin-top: -20px;
         margin-bottom: -20px;
     }
+    &-container {
+        padding-right: 20px;
+        flex: 1 1 100%;
+        display: flex;
+        position: relative;
+    }
+    &-content {
+        display: flex;
+        position: relative;
+        width: 100%;
+    }
+    &-bars {
+        height: 100%;
+        position: relative;
+        display: flex;
+        flex: 1 1 100%;
+        justify-content: center;
+        padding: 0 10px;
+        
+        .only-negatives & {
+            position: static;
+        }
+    }
+    &-x-axis {
+        width: 100%;
+        border-bottom: 1px solid black;
+        position: absolute;
+        left: 0;
+        top: -1px;
+
+    }
+    &-scale {
+        position: absolute;
+        width: 100%;
+        height: 0;
+        top: 100%;
+        margin-right: 20px;
+        flex: 0 0 auto;
+
+        .only-negatives & {
+            top: 0;
+        }
+
+        &-value {
+            position: absolute;
+            left: -5px;
+            width: 10px;
+            border-bottom: 1px solid black;
+            font-size: 12px;
+            span {
+                position: absolute;
+                top: 100%;
+                right: 15px;
+                transform: translateY(-50%);
+            }
+        }
+    }
 }
 
-.chart-axis {
-    height: 100%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    border-bottom: 1px solid #000;
-    flex: 1 1 100%;
-    padding: 0 20px 0 30px;
-}
 
 .bar-container {
     position: relative;
@@ -50,14 +98,30 @@ div, p, h1, h2, h3, h4, h5, h6, span, ul, li, form, input, button {
     width: 90%;
     display: inline-block;
     position: absolute;
-    bottom: 0;
+    bottom: 1px;
     left: 0;
     right: 0;
     margin: 0 auto;
     min-height: 5px;
+    &:after {
+        content: '';
+        width: 900px;
+        position: absolute;
+        right: 0;
+        border-top: 1px dashed #555;
+        top: 0;
+    }
 
     &.negative {
         bottom: auto;
-        top: calc(100% + 1px);
+        top: 100%;
+        &:after {
+            top: auto;
+            bottom: 0;
+        }
+
+        .only-negatives & {
+            top: 0;
+        }
     }
 }
