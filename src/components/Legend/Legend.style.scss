@@ -1,0 +1,48 @@
+.legend {
+    flex: 1 1 450px;
+    background-color: $dark-background * 0.2;
+    margin-left: 20px;
+    padding-left: 20px;
+    border-radius: 20px;
+
+    &-container {
+        list-style-type: none;
+        margin: 0;
+        padding: 10px;;
+    }
+
+    &-item {
+        display: flex;
+        align-items: center;
+        color: #eee;
+        padding: 5px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid $theme-color * 0.4;
+
+        &:hover {
+            background: $dark-background * 0.6;
+            
+            button {
+                visibility: visible;
+            }
+        }
+
+        > span {
+            padding: 3px;
+            margin-right: 5px;
+        }
+
+        &-name {
+            flex: 1 1 100%;
+        }
+
+        &-value {
+            flex: 1 1 30%;
+            text-align: right;
+        }
+
+        button {
+            visibility: hidden;
+        }
+    }
+}

@@ -1,0 +1,65 @@
+
+.bar {
+    border-radius: 10px 10px 0 0;
+    &.negative {
+        border-radius: 0 0 10px 10px;
+    }
+}
+
+.bar-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    flex: 1 1 auto;
+    max-width: 150px;
+}
+
+.bar {
+    background: #999;
+    width: 90%;
+    display: inline-block;
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    min-height: 5px;
+    transition: height .3s, width .3s;
+    height: 0;
+
+    &:hover {
+        .bar-value-label {
+            display: block;
+        }
+    }
+
+    &.negative {
+        bottom: auto;
+        top: 100%;
+
+        .only-negatives & {
+            top: 0;
+        }
+
+        .bar-value-label {
+            top: 100%;
+            bottom: auto;
+        }
+    }
+    &-value-label {
+        display: none;
+        position: absolute;
+        bottom: 100%;
+        color: #ccc;
+        font-size: 11px;
+    }
+}
+
+@for $i from 1 through 3 {
+    .bar-container:nth-child(3n + #{$i}) {
+        .bar {
+            background: $theme-color * ($i * 0.4 + 0.2 / $i);
+        }
+    }
+}

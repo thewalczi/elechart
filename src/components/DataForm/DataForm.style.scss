@@ -1,0 +1,63 @@
+
+.data-form {
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    margin-top: 20px;
+
+    > div {
+        margin-right: 15px;
+        position: relative;
+
+        > input {
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            height: 50px;
+            border-radius: 10px;
+            border: 2px solid $default_form-input-field--border-color;
+            padding: 0 15px;
+            font-size: 18px;
+            background-color: $default_form-input-field--background-color;
+            color: #fff;
+        
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button,
+            &[type="number"] {
+                -webkit-appearance: none;
+                -moz-appearance: textfield;
+                appearance: none;
+            }
+
+            &:focus,
+            &:not([value=""]) {
+                ~ label {
+                    top: -15px;
+                    left: 5px;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    &-name {
+        flex: 1 1 65%;
+        display: relative;
+    }
+    &-value {
+        flex: 1 1 25%;
+        display: relative;
+    }
+
+    label {
+        position: absolute;
+        top : 50%;
+        left: 15px;
+        transform: translateY(-50%);
+        font-size: 16px;
+        color: $default-form-input-field--border-color;
+        transition: top 0.3s ease-out, left 0.3s ease-out, font-size 0.3s ease-out;
+        z-index: 2;
+        // text-shadow: 0 0 1px $default_main--background-color, 0 0 1px $default_main--background-color, 0 0 1px $default_main--background-color, 0 0 1px $default_main--background-color, 0 0 1px $default_main--background-color, 0 0 1px $default_main--background-color, 0 0 1px $default_main--background-color, 0 0 1px $default_main--background-color;
+    }
+}

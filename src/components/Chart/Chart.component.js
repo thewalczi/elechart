@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { ChartDataContext } from '../contexts/ChartData.context';
-import Bar from './Bar.component';
+import { ChartDataContext } from '../../contexts/ChartData.context';
+import Bars from '../Bars/Bars.component';
 
 const Chart = () => {
     
@@ -11,15 +11,11 @@ const Chart = () => {
     };
 
     return (
-        <div className="chart">
+        <div className="chart tile-container">
             <div className={`chart-container ${!hasPositiveValues ? 'only-negatives' : ''}`}>
                 <div style={chartStyle} className="chart-content">                   
                     <ChartScale/>
-                    <div className="chart-bars">
-                        {data.map(item => {
-                            return <Bar key={item.id} item={item}/>
-                        })}
-                    </div>
+                    <Bars/>
                 </div>
             </div>
         </div>
