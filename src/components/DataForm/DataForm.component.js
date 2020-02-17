@@ -21,9 +21,9 @@ const DataForm = () => {
             </div>
             <div className="data-form-value">
                 <input id="value" type="number" value={value} tabIndex="0" onChange={(e) => setValue(e.target.value)}/>
-                <label htmlFor="value">Value  </label>
+                <label htmlFor="value">Value</label>
             </div>
-            <button type="submit" className="data-value-submit form-button" disabled={disableButton}>Add</button>
+            <button type="submit" className="data-value-submit button-default form-button" disabled={disableButton}>Add</button>
         </form>
     );
 }

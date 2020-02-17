@@ -5,6 +5,7 @@ import Header from './components/Header/Header.component';
 import DataForm from './components/DataForm/DataForm.component';
 import Chart from './components/Chart/Chart.component';
 import Legend from './components/Legend/Legend.component';
+import Modal from './components/Modal/Modal.component';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             </div>
           </div>
         </div>
+        <Modal/>
       </ChartDataContextProvider>
     </div>
   );

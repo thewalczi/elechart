@@ -7,6 +7,7 @@
 @import '../components/DataForm/DataForm.style.scss';
 @import '../components/Chart/Chart.style.scss';
 @import '../components/Legend/Legend.style.scss';
+@import '../components/Modal/Modal.style.scss';
 
 
 body, html {
@@ -51,7 +52,7 @@ input[type="submit"] {
         cursor: initial;
     }
 
-    &.form-button {
+    &.button-default {
         height: 50px;
         font-size: 18px;
         flex: 0 0 auto;

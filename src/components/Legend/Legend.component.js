@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { ChartDataContext } from '../../contexts/ChartData.context';
 
 const Legend = () => {
-    const { data,RemoveData } = useContext(ChartDataContext);
+    const { data, ToggleModalState } = useContext(ChartDataContext);
     return (
         <div className="legend tile-container">
             <ul className="legend-container">
@@ -16,7 +16,7 @@ const Legend = () => {
                                 <DropdownList>
                                     <ul>
                                         <li>Edit</li>
-                                        <li onClick={() => RemoveData(item.id)}>Remove</li>
+                                        <li onClick={() => ToggleModalState(item.id)}>Remove</li>
                                     </ul>
                                 </DropdownList>
                             </button>   

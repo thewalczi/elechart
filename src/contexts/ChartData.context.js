@@ -73,6 +73,8 @@ const ChartDataContextProvider = (props) => {
     const [scale, setScale] = useState([]);
     const [chartHeight, setChartHeight] = useState('');
     const [indexValue, setIndexValue] = useState('0');
+    const [modalState, setModalState] = useState(false);
+    const [currentItem, setCurrentItem] = useState('');
 
     let hasNegativeValues = minValue < 0 ? true : false;
     let hasPositiveValues = maxValue >= 0 ? true : false;
@@ -136,6 +138,12 @@ const ChartDataContextProvider = (props) => {
 
     const RemoveData = id => {
         setData(data.filter(item => item.id !== id));
+        setModalState(false);
+    }
+
+    const ToggleModalState = (item) => {
+        setModalState(!modalState);
+        setCurrentItem(item);
     }
 
 
@@ -152,7 +160,10 @@ const ChartDataContextProvider = (props) => {
                 RemoveData,
                 scale,
                 chartHeight,
-                indexValue
+                indexValue,
+                modalState,
+                ToggleModalState,
+                currentItem
             }}
         >
             {props.children}
