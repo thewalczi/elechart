@@ -20,14 +20,6 @@
             font-size: 18px;
             background-color: $default_form-input-field--background-color;
             color: #fff;
-        
-            &::-webkit-outer-spin-button,
-            &::-webkit-inner-spin-button,
-            &[type="number"] {
-                -webkit-appearance: none;
-                -moz-appearance: textfield;
-                appearance: none;
-            }
 
             &:focus,
             &:not([value=""]) {

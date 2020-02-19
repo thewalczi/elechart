@@ -105,7 +105,7 @@ const ChartDataContextProvider = (props) => {
         let indexScale = await hasNegativeValues && !hasPositiveValues ? chartContainerHeight/Math.ceil(minValue) : chartContainerHeight/Math.ceil(maxValue); //distance between every point on scale
         let array = await []; // scale data placeholder
         let power = await indexValue.toString().length; // power of 10
-        let divisor = await Math.pow(10, power - 1) / 2; // 10^power // divied by 2 allows for rendering semi-values like 15, 250 etc.
+        let divisor = await Math.pow(10, power - 1) / 4; // 10^power // divied by 2 allows for rendering semi-values like 15, 250 etc.
         let initValue = await hasNegativeValues ? Math.ceil(minValue / divisor) * divisor : 0; // start value for scale (the lowest)
         let topScale = await maxValue <= 0 ? 0 : Math.floor(maxValue / divisor) * divisor; // end value for scale (the highest)
 
@@ -141,6 +141,18 @@ const ChartDataContextProvider = (props) => {
         setModalState(false);
     }
 
+    const UpdateData = (itemId, newName, newValue) => {
+        setData(
+            data.map(item => {
+                return item.id === itemId ? {...item, name: newName, value: newValue} : item;
+            })
+        );
+    }
+
+    const GetCurrentItem = (id) => {
+        setCurrentItem(id);
+    }
+
     const ToggleModalState = (item) => {
         setModalState(!modalState);
         setCurrentItem(item);
@@ -158,12 +170,14 @@ const ChartDataContextProvider = (props) => {
                 hasPositiveValues,
                 AddData,
                 RemoveData,
+                UpdateData,
                 scale,
                 chartHeight,
                 indexValue,
                 modalState,
                 ToggleModalState,
-                currentItem
+                currentItem,
+                GetCurrentItem
             }}
         >
             {props.children}

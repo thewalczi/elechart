@@ -1,5 +1,6 @@
 .legend {
-    flex: 1 1 450px;
+    flex: 1 1 30%;
+    // min-width: 350px;
     background-color: $dark-background * 0.2;
     margin-left: 20px;
     padding-left: 20px;
@@ -12,37 +13,96 @@
     }
 
     &-item {
-        display: flex;
-        align-items: center;
-        color: #eee;
-        padding: 5px;
+        // padding: 5px;
         margin-bottom: 10px;
         border-bottom: 1px solid $theme-color * 0.4;
-
+        cursor: pointer;
+        
         &:hover {
             background: $dark-background * 0.6;
-            
-            button {
-                visibility: visible;
+        }
+        
+        &-name {
+            // -webkit-box-flex: 3 2 auto;
+            // -moz-box-flex: 3 2 auto;
+            // -webkit-flex: 3 2 auto;
+            // -ms-flex: 3 2 auto;
+            // flex: 3 2 auto;
+        }
+    
+        &-value {
+            // -webkit-box-flex: 1 1 30%;
+            // -moz-box-flex: 1 1 30%;
+            // -webkit-flex: 1 1 30%;
+            // -ms-flex: 1 1 30%;
+            // flex: 1 1 30%;
+        }
+        // &.legend-item-editable {
+        //     .legend-item-data {
+        //         display: none;
+        //     }
+        // }
+
+        // &:not(.legend-item-editable) {
+        //     .legend-item-form {
+        //         display: none;
+        //     }
+        // }
+
+        &-data,
+        &-form {
+            display: flex;
+            align-items: center;
+
+            &-name {
+                flex: 3 2 100%;
+            }
+
+            &-value {
+                flex: 1 1 30%;
+                margin-left: 5px;
+            }
+
+            &-name,
+            &-value {
+                color: #eee;
+                font-size: 14px;
             }
         }
 
-        > span {
-            padding: 3px;
-            margin-right: 5px;
+        &-data {
+            & > div {
+                padding: 5px;
+            }
+            &-value {
+                text-align: right;
+            }
         }
+        &-form {
+            input {
+                padding: 5px;
+                font-family: inherit;
+                font-size: 14px;
+                color: #eee;
+                background-color: $dark-background * 0.4;
+                border: 0;
+                // height: 24px;
+                width: 100%;
+            }
+        }
+    }
+}
 
-        &-name {
-            flex: 1 1 100%;
-        }
+.toolbar-container {
+    display: none;
+    flex: 0;
+    
+    .legend-item-editable & {
+        display: flex;
+    }
 
-        &-value {
-            flex: 1 1 30%;
-            text-align: right;
-        }
-
-        button {
-            visibility: hidden;
-        }
+    & > button {
+        flex: 0 0 auto;
+        margin-left: 5px;
     }
 }

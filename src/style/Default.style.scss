@@ -34,6 +34,16 @@ div, p, h1, h2, h3, h4, h5, h6, span, ul, li, form, input, button {
     }
 }
 
+input {
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button,
+    &[type="number"] {
+        -webkit-appearance: none;
+        -moz-appearance: textfield;
+        appearance: none;
+    }
+}
+
 button,
 input[type="submit"] {
     color: $default_button--color;
@@ -61,7 +71,7 @@ input[type="submit"] {
         padding: 0 20px;
 
     }
-    &.icon-button {
+    &.button-icon {
         width: 24px;
         height: 24px;
         padding: 3px;

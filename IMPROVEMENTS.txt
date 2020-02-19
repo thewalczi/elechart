@@ -3,18 +3,18 @@ IMPROVEMENTS
     **DONE** DynamicScale working only up to specific amount of values on scale (prevent unreadability with stacked scale values),
     **DONE** Refactoring of the DynamicScale code in ChartData.context file,
     *Clean Style file,
-    **DONE**New styling for whole app,
-    *Editable values and names,
-    *three-dots action in the legend (howing dropdown tih remove and edit option),
+    **DONE** New styling for whole app,
+    **DONE** Editable values and names,
     *Predefined sets (chart for whole year (12 bars) and multiple years (2+ charts together)),
     *tile with additional stats (average value, min and max value etc.),
     *chart options (switching views, ),
     *scroollable chart (horizontally) and legend (vartically) when too much values,
     *animated bars
-    *Popup before removing value
+    **DONE** Popup before removing value
 
 
 
 BUGS
 
-*Negative values are sometimes not aligned with the scale (1px difference)
+**FIXED** Negative values are sometimes not aligned with the scale (1px difference)
+Scale dissapears when too much values on it,
