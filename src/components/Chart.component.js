@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { ChartDataContext } from '../../contexts/ChartData.context';
-import Bars from '../Bars/Bars.component';
+import { ChartDataContext } from '../context/ChartData.context';
+import Bars from './Bars.component';
 
 const Chart = () => {
     

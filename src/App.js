@@ -1,11 +1,11 @@
 import React from 'react';
 import './style/Default.style.scss';
-import ChartDataContextProvider from './contexts/ChartData.context';
-import Header from './components/Header/Header.component';
-import DataForm from './components/DataForm/DataForm.component';
-import Chart from './components/Chart/Chart.component';
-import Legend from './components/Legend/Legend.component';
-import Modal from './components/Modal/Modal.component';
+import ChartDataContextProvider from './context/ChartData.context';
+import Header from './components/Header.component';
+import DataForm from './components/DataForm.component';
+import Chart from './components/Chart.component';
+import Legend from './components/Legend.component';
+import Modal from './components/Modal.component';
 
 
 function App() {

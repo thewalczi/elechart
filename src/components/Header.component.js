@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ChartDataContext } from '../../contexts/ChartData.context';
+import { ChartDataContext } from '../context/ChartData.context';
 
 const Header = () => {
     return (

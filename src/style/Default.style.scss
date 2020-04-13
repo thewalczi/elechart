@@ -2,12 +2,12 @@
 
 @import './Default.variables.scss';
 
-@import '../components/Bars/Bars.style.scss';
-@import '../components/Header/Header.style.scss';
-@import '../components/DataForm/DataForm.style.scss';
-@import '../components/Chart/Chart.style.scss';
-@import '../components/Legend/Legend.style.scss';
-@import '../components/Modal/Modal.style.scss';
+@import './Bars.style.scss';
+@import './Header.style.scss';
+@import './DataForm.style.scss';
+@import './Chart.style.scss';
+@import './Legend.style.scss';
+@import './Modal.style.scss';
 
 
 body, html {

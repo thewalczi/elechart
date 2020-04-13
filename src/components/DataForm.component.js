@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { ChartDataContext } from '../../contexts/ChartData.context';
+import { ChartDataContext } from '../context/ChartData.context';
 
 const DataForm = () => {
     const {AddData} = useContext(ChartDataContext)

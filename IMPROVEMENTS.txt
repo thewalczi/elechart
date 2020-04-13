@@ -8,11 +8,11 @@ IMPROVEMENTS
     *Predefined sets (chart for whole year (12 bars) and multiple years (2+ charts together)),
     *tile with additional stats (average value, min and max value etc.),
     *chart options (switching views, ),
-    *scroollable chart (horizontally) and legend (vartically) when too much values,
+    *scroollable chart (horizontally) and legend (vertically) when too much values,
     *animated bars
     **DONE** Popup before removing value
-    *Bar highlighted on hover
-    *Bar highlighted on hovering item in legend
+    **DONE** Bar highlighted on hover
+    **DONE** Bar highlighted on hovering item in legend
     *Placeholder when there is no data set
 
 

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { ChartDataContext } from '../../contexts/ChartData.context';
+import { ChartDataContext } from '../context/ChartData.context';
 
 const Bars = () => {
     const { data, maxValue, indexValue, hasPositiveValues, barHover, HighlightBar } = useContext(ChartDataContext);
