@@ -31,7 +31,7 @@ const useComponentVisible = (initial) => {
 
 const Legend = () => {
     const { ref, isEditable, setIsEditable } = useComponentVisible(false);
-    const { data, ToggleModalState, UpdateData, currentItem, GetCurrentItem } = useContext(ChartDataContext);
+    const { data, ToggleModalState, UpdateData, currentItem, GetCurrentItem, barHover, HighlightBar } = useContext(ChartDataContext);
 
     const [name, setName] = useState('');
     const [value, setValue] = useState('');
@@ -49,6 +49,14 @@ const Legend = () => {
         GetCurrentItem('');
     }
 
+    let handleMouseOver = (id) => {
+        HighlightBar(id);
+    }
+
+    let handleMouseOut = () => {
+        HighlightBar('');
+    }
+
     return (
         <div className="legend tile-container">
             <ul ref={ref} className="legend-container">
@@ -56,11 +64,11 @@ const Legend = () => {
                     return (
                         <li 
                             key={item.id}
-                            
                             id={item.id}
-                            className={`legend-item ${currentItem === item.id ? 'legend-item-editable' : ''}`}
+                            className={`legend-item ${currentItem === item.id ? 'legend-item-editable' : ''} ${barHover === item.id ? 'hovered' : ''}`}
                             // onClick={currentItem !== item.id && !isEditable ? () => addEditClass(item.id, item.name, item.value) : null}
-                            
+                            onMouseOver={() => handleMouseOver(item.id)}
+                            onMouseOut={handleMouseOut}
                         >
                                 {currentItem !== item.id ? (
 

@@ -12,17 +12,38 @@
         flex: 1 1 100%;
         display: flex;
         position: relative;
-        margin: 20px;
-        margin-left: 35px;
+        padding: 40px 20px;
+        padding-left: 35px;
+        overflow: hidden;
+
+        // &:before {
+        //     content: '';
+        //     width: 0;
+        //     height: calc(100% + ($default-spacing * 2));
+        //     // border-left: 1px solid #aaa;
+        //     flex: 1 1 auto;
+        //     margin-top: -$default-spacing;
+        //     margin-bottom: -$default-spacing;
+        // }
+        &:before,
+        &:after {
+            content: '';
+            width: 100%;
+            height: 20px;
+            position: absolute;
+            left: 0;
+            background-image: linear-gradient($default_tile--background-color, rgba(0, 0, 0, 0));
+            z-index: 2;
+        }
 
         &:before {
-            content: '';
-            width: 0;
-            height: calc(100% + ($default-spacing * 2));
-            // border-left: 1px solid #aaa;
-            flex: 1 1 auto;
-            margin-top: -$default-spacing;
-            margin-bottom: -$default-spacing;
+            top: 0;
+            background-image: linear-gradient($default_tile--background-color, rgba(0, 0, 0, 0));
+        }
+
+        &:after {
+            bottom:0;
+            background-image: linear-gradient(rgba(0, 0, 0, 0), $default_tile--background-color);
         }
     }
     

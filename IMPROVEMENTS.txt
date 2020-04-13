@@ -11,6 +11,9 @@ IMPROVEMENTS
     *scroollable chart (horizontally) and legend (vartically) when too much values,
     *animated bars
     **DONE** Popup before removing value
+    *Bar highlighted on hover
+    *Bar highlighted on hovering item in legend
+    *Placeholder when there is no data set
 
 
 

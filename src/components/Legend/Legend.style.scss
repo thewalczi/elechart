@@ -18,7 +18,7 @@
         border-bottom: 1px solid $theme-color * 0.4;
         cursor: pointer;
         
-        &:hover {
+        &.hovered {
             background: $dark-background * 0.6;
         }
         

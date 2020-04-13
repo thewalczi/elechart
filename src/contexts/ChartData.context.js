@@ -75,6 +75,7 @@ const ChartDataContextProvider = (props) => {
     const [indexValue, setIndexValue] = useState('0');
     const [modalState, setModalState] = useState(false);
     const [currentItem, setCurrentItem] = useState('');
+    const [barHover, setBarHover ] = useState('')
 
     let hasNegativeValues = minValue < 0 ? true : false;
     let hasPositiveValues = maxValue >= 0 ? true : false;
@@ -106,8 +107,8 @@ const ChartDataContextProvider = (props) => {
         let array = await []; // scale data placeholder
         let power = await indexValue.toString().length; // power of 10
         let divisor = await Math.pow(10, power - 1) / 4; // 10^power // divied by 2 allows for rendering semi-values like 15, 250 etc.
-        let initValue = await hasNegativeValues ? Math.ceil(minValue / divisor) * divisor : 0; // start value for scale (the lowest)
-        let topScale = await maxValue <= 0 ? 0 : Math.floor(maxValue / divisor) * divisor; // end value for scale (the highest)
+        let initValue = await hasNegativeValues ? Math.ceil(minValue / divisor - 2) * divisor : 0; // start value for scale (the lowest)
+        let topScale = await maxValue <= 0 ? 0 : Math.floor(maxValue / divisor + 2) * divisor; // end value for scale (the highest)
 
         for(let i = initValue; i <= topScale; i++){
             let data = {value: i, height: Math.abs(indexScale) * i}
@@ -158,6 +159,10 @@ const ChartDataContextProvider = (props) => {
         setCurrentItem(item);
     }
 
+    const HighlightBar =  (id) => {
+        setBarHover(id);
+    }
+
 
 
     return (
@@ -177,7 +182,9 @@ const ChartDataContextProvider = (props) => {
                 modalState,
                 ToggleModalState,
                 currentItem,
-                GetCurrentItem
+                GetCurrentItem,
+                barHover,
+                HighlightBar
             }}
         >
             {props.children}

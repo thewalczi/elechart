@@ -25,12 +25,23 @@
     right: 0;
     margin: 0 auto;
     min-height: 5px;
-    // transition: height .3s, width .3s;
     height: 0;
+    opacity: 0.8;
 
-    &:hover {
+    &.hovered {
+        opacity: 1;
+
         .bar-value-label {
             display: block;
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 100%;
+            width: 1000px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.5);
         }
     }
 
@@ -46,7 +57,13 @@
             top: 100%;
             bottom: auto;
         }
+        &:hover {
+            &:before {
+                top: 100%;
+            }
+        }
     }
+
     &-value-label {
         display: none;
         position: absolute;
