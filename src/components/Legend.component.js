@@ -92,7 +92,7 @@ const Legend = () => {
                                                 <input
                                                     type="number"
                                                     value={value}
-                                                    onChange={(e) => setValue(e.target.value)}
+                                                    onChange={(e) => setValue(parseInt(e.target.value))}
                                                     />
                                             </div>
                                             <div className="toolbar-container">

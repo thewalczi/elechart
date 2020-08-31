@@ -1,10 +1,7 @@
 .legend {
     flex: 1 1 30%;
-    // min-width: 350px;
     background-color: $dark-background * 0.2;
-    margin-left: 20px;
     padding-left: 20px;
-    border-radius: 20px;
 
     &-container {
         list-style-type: none;
@@ -13,7 +10,6 @@
     }
 
     &-item {
-        // padding: 5px;
         margin-bottom: 10px;
         border-bottom: 1px solid $theme-color * 0.4;
         cursor: pointer;

@@ -6,18 +6,22 @@ IMPROVEMENTS
     **DONE** New styling for whole app,
     **DONE** Editable values and names,
     *Predefined sets (chart for whole year (12 bars) and multiple years (2+ charts together)),
-    *tile with additional stats (average value, min and max value etc.),
+    **DONE** tile with additional stats (average value, min and max value etc.),
     *chart options (switching views, ),
     *scroollable chart (horizontally) and legend (vertically) when too much values,
     *animated bars
     **DONE** Popup before removing value
     **DONE** Bar highlighted on hover
     **DONE** Bar highlighted on hovering item in legend
-    *Placeholder when there is no data set
+    *Placeholder when there is no data set,
+    *Ability to create more charts,
+    *pie chart
+    *action buttons in different colors (remove/close - red)
 
 
 
 BUGS
 
-**FIXED** Negative values are sometimes not aligned with the scale (1px difference)
-Scale dissapears when too much values on it,
+    **FIXED** Negative values are sometimes not aligned with the scale (1px difference)
+    *Scale dissapears when too much values on it,
+    *Chart is loosing scale while added too much values in the legend (probably chart fixed height issue)

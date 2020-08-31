@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { ChartDataContext } from '../context/ChartData.context';
 import Bars from './Bars.component';
 
-const Chart = () => {
+const BarChart = () => {
     
     const { data, hasPositiveValues, chartHeight } = useContext(ChartDataContext);
     
@@ -11,9 +11,9 @@ const Chart = () => {
     };
 
     return (
-        <div className="chart tile-container">
-            <div className={`chart-container ${!hasPositiveValues ? 'only-negatives' : ''}`}>
-                <div style={chartStyle} className="chart-content">                   
+        <div className="bar-chart tile-container">
+            <div className={`bar-chart-container ${!hasPositiveValues ? 'only-negatives' : ''}`}>
+                <div style={chartStyle} className="bar-chart-content">                   
                     <ChartScale/>
                     <Bars/>
                 </div>
@@ -27,10 +27,10 @@ const ChartScale = () => {
     const { scale } = useContext(ChartDataContext);
 
     return (
-        <div className="chart-scale">
-            <div className="chart-x-axis"></div>
+        <div className="bar-chart-scale">
+            <div className="bar-chart-x-axis"></div>
             {scale.map((item, i) => (
-            <div key={i} className="chart-scale-value" style={{bottom: item.height +'px'}}>
+            <div key={i} className="bar-chart-scale-value" style={{bottom: item.height +'px'}}>
                 <span>
                     {item.value}
                 </span>
@@ -40,4 +40,4 @@ const ChartScale = () => {
     )
 }
  
-export default Chart;
+export default BarChart;
