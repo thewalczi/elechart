@@ -5,9 +5,10 @@
 @import './Bars.style.scss';
 @import './Header.style.scss';
 @import './DataForm.style.scss';
-@import './Chart.style.scss';
+@import './BarChart.style.scss';
 @import './Legend.style.scss';
 @import './Modal.style.scss';
+@import './Info.style.scss';
 
 
 body, html {
@@ -126,30 +127,64 @@ input[type="submit"] {
     }
 }
 
-// .main-content {
-//     width: 100%;
-//     padding: 30px;
-//     border-radius: 30px 30px 0 0;
-//     background-image: $default_main-content-background-color;
-// }
-
 .main-content {
     margin-bottom: $default-spacing;
 }
 
 .row {
     display: flex;
+    margin: 0 $default-spacing;
 
     .tile-container:first-child {
-        margin-left: $default-spacing;
+        // margin-left: $default-spacing;
+    }
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    margin: $default-spacing;
+
+    &:first-child {
+        margin-left: 0;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+
+
+}
+
+@for $i from 1 through 12 {
+    .col-xs,
+    .col-s,
+    .col-m,
+    .col-l,
+    .col-xl {
+        &-#{$i} {
+            flex-grow: 0;
+            flex-shrink: 1;
+            flex-basis: calc(#{$i} * (100% / 12));
+        }
     }
 }
 
 .tile-container {
     background-color: $default_tile--background-color;
     box-shadow: 0 0 20px rgba(#000, .3);
+    border-radius: 20px;
     padding: $default-spacing;
-    margin: $default-spacing $default-spacing 0 0;
+    margin: $default-spacing 0;
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
 }
 
 

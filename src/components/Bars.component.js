@@ -20,12 +20,12 @@ const Bars = () => {
     }
 
     return (
-        <div className="chart-bars">
+        <div className="bar-chart-bars">
             {data.map((item, i) => {
                 return (
                     <div key={i} className="bar-container">
                         <div 
-                            className={`bar ${item.value < 0 ? 'negative' : ''} ${barHover === item.id ? 'hovered' : ''}`}
+                            className={`bar ${item.value < 0 ? 'negative' : ''}`}
                             style={{height: `${setBarHeight(Math.abs(item.value))}`}}
                             onMouseOver={() => handleMouseOver(item.id)}
                             onMouseOut={handleMouseOut}

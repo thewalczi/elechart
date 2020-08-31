@@ -28,7 +28,7 @@
     height: 0;
     opacity: 0.8;
 
-    &.hovered {
+    &:hover {
         opacity: 1;
 
         .bar-value-label {

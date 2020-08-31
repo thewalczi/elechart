@@ -10,12 +10,13 @@ const ChartDataContextProvider = (props) => {
 
     const [minValue, setMinValue] = useState('');
     const [maxValue, setMaxValue] = useState('');
+    const [avgValue, setAvgValue] = useState('');
     const [scale, setScale] = useState([]);
     const [chartHeight, setChartHeight] = useState('');
     const [indexValue, setIndexValue] = useState('0');
     const [modalState, setModalState] = useState(false);
     const [currentItem, setCurrentItem] = useState('');
-    const [barHover, setBarHover ] = useState('')
+    const [barHover, setBarHover ] = useState('');
 
     let hasNegativeValues = minValue < 0 ? true : false;
     let hasPositiveValues = maxValue >= 0 ? true : false;
@@ -23,12 +24,14 @@ const ChartDataContextProvider = (props) => {
 
     let minMaxValueSetter = () => {
         let valueArr = [];
+        
         data.map(item => {
             return valueArr.push(item.value);
         })
         
         setMinValue(Math.min(...valueArr));
         setMaxValue(Math.max(...valueArr));
+        setAvgValue(parseFloat((valueArr.reduce((a, b) => a + b, 0) / valueArr.length).toFixed(3)));
     }
 
     let chartHeightSetter = () => {
@@ -42,7 +45,7 @@ const ChartDataContextProvider = (props) => {
 
     let dynamicScale = async () => { //dynamic scale render on Y axis
         await setIndexValue(Math.abs(minValue) > Math.abs(maxValue) ? Math.abs(minValue) : Math.abs(maxValue));
-        let chartContainerHeight = await document.querySelector('.chart-content').offsetHeight;  //height of the chart container
+        let chartContainerHeight = await document.querySelector('.bar-chart-content').offsetHeight;  //height of the chart container
         let indexScale = await hasNegativeValues && !hasPositiveValues ? chartContainerHeight/Math.ceil(minValue) : chartContainerHeight/Math.ceil(maxValue); //distance between every point on scale
         let array = await []; // scale data placeholder
         let power = await indexValue.toString().length; // power of 10
@@ -62,7 +65,7 @@ const ChartDataContextProvider = (props) => {
 
     useEffect(() => {
         minMaxValueSetter();
-    }, [data]);
+    });
 
     useEffect(() => { 
        dynamicScale();
@@ -111,6 +114,7 @@ const ChartDataContextProvider = (props) => {
                 data,
                 maxValue,
                 minValue,
+                avgValue,
                 hasNegativeValues,
                 hasPositiveValues,
                 AddData,
