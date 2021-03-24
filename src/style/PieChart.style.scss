@@ -1,0 +1,42 @@
+.pie {
+    height: calc(var(--size, 400) * 1px);
+    width: calc(var(--size, 400) * 1px);
+    position: relative;
+    border-radius: 50%;
+    background: #a00;
+    overflow: hidden;
+
+    &-segment {
+        --start: calc((var(--offset) / 100) * 360deg);
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        transform: translate(0, -50%) rotate(90deg) rotate(var(--start));
+        transform-origin: 50% 100%;
+        // overflow: hidden;
+
+        &:after,
+        &:before {
+            content: '';
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            background: var(--bg);
+        }
+        
+        &:before {
+            --degrees: calc((var(--value) / 100) * 360deg );
+            transform: translate(0, 100%) rotate(var(--degrees));
+            transform-origin: 50% 0;
+        }
+        &:after {
+            opacity: var(--over50);
+        }
+        &:hover {
+            &:before,
+            &:after {
+                background: green;
+            }
+        }
+    }
+}
