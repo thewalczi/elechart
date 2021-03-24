@@ -1,0 +1,124 @@
+
+.bar-chart {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    display: flex;
+    flex: 3 2 auto;
+    
+
+    &-container {
+        flex: 1 1 100%;
+        display: flex;
+        position: relative;
+        padding: 40px 20px;
+        padding-left: 35px;
+        overflow: hidden;
+
+        // &:before {
+        //     content: '';
+        //     width: 0;
+        //     height: calc(100% + ($default-spacing * 2));
+        //     // border-left: 1px solid #aaa;
+        //     flex: 1 1 auto;
+        //     margin-top: -$default-spacing;
+        //     margin-bottom: -$default-spacing;
+        // }
+        &:before,
+        &:after {
+            content: '';
+            width: 100%;
+            height: 20px;
+            position: absolute;
+            left: 0;
+            background-image: linear-gradient($default_tile--background-color, rgba(0, 0, 0, 0));
+            z-index: 2;
+        }
+
+        &:before {
+            top: 0;
+            background-image: linear-gradient($default_tile--background-color, rgba(0, 0, 0, 0));
+        }
+
+        &:after {
+            bottom:0;
+            background-image: linear-gradient(rgba(0, 0, 0, 0), $default_tile--background-color);
+        }
+    }
+    
+    &-content {
+        display: flex;
+        position: relative;
+        width: 100%;
+        // transition: height .3s;
+    }
+    
+    &-scale {
+        position: absolute;
+        width: 100%;
+        height: 0;
+        top: 100%;
+        margin-right: 20px;
+        flex: 0 0 auto;
+    
+        .only-negatives & {
+            top: 0;
+        }
+    
+        &-value {
+            position: absolute;
+            width: 100%;
+            
+            // &:after {
+            //     position: absolute;
+            //     left: -5px;
+            //     border-bottom: 1px solid #aaa;
+            //     width: 5px;
+            //     content: '';
+            // }
+            &:nth-child(even):before {
+                position: absolute;
+                bottom: 0;
+                content: '';
+                background-color: rgba(#fff, 0.05);
+                height: 100%;
+                width: 100%;
+            }
+            &:last-child:before {
+                display: none;
+            }
+
+            span {
+                position: absolute;
+                top: 100%;
+                right: calc(100% + 5px);
+                transform: translateY(-50%);
+                font-size: 10px;
+                color: #aaa
+            }
+        }
+    }
+
+    &-x-axis {
+        width: 100%;
+        border-bottom: 1px solid #aaa;
+        position: absolute;
+        left: 0;
+        top: -1px;
+    }
+
+    &-bars {
+        height: 100%;
+        position: relative;
+        display: flex;
+        flex: 1 1 100%;
+        justify-content: center;
+        padding: 0 10px;
+        
+        .only-negatives & {
+            position: static;
+        }
+    }
+    
+}
+

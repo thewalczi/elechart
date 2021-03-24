@@ -1,0 +1,104 @@
+.legend {
+    flex: 1 1 30%;
+    background-color: $dark-background * 0.2;
+    padding-left: 20px;
+
+    &-container {
+        list-style-type: none;
+        margin: 0;
+        padding: 10px;;
+    }
+
+    &-item {
+        margin-bottom: 10px;
+        border-bottom: 1px solid $theme-color * 0.4;
+        cursor: pointer;
+        
+        &.hovered {
+            background: $dark-background * 0.6;
+        }
+        
+        &-name {
+            // -webkit-box-flex: 3 2 auto;
+            // -moz-box-flex: 3 2 auto;
+            // -webkit-flex: 3 2 auto;
+            // -ms-flex: 3 2 auto;
+            // flex: 3 2 auto;
+        }
+    
+        &-value {
+            // -webkit-box-flex: 1 1 30%;
+            // -moz-box-flex: 1 1 30%;
+            // -webkit-flex: 1 1 30%;
+            // -ms-flex: 1 1 30%;
+            // flex: 1 1 30%;
+        }
+        // &.legend-item-editable {
+        //     .legend-item-data {
+        //         display: none;
+        //     }
+        // }
+
+        // &:not(.legend-item-editable) {
+        //     .legend-item-form {
+        //         display: none;
+        //     }
+        // }
+
+        &-data,
+        &-form {
+            display: flex;
+            align-items: center;
+
+            &-name {
+                flex: 3 2 100%;
+            }
+
+            &-value {
+                flex: 1 1 30%;
+                margin-left: 5px;
+            }
+
+            &-name,
+            &-value {
+                color: #eee;
+                font-size: 14px;
+            }
+        }
+
+        &-data {
+            & > div {
+                padding: 5px;
+            }
+            &-value {
+                text-align: right;
+            }
+        }
+        &-form {
+            input {
+                padding: 5px;
+                font-family: inherit;
+                font-size: 14px;
+                color: #eee;
+                background-color: $dark-background * 0.4;
+                border: 0;
+                // height: 24px;
+                width: 100%;
+            }
+        }
+    }
+}
+
+.toolbar-container {
+    display: none;
+    flex: 0;
+    
+    .legend-item-editable & {
+        display: flex;
+    }
+
+    & > button {
+        flex: 0 0 auto;
+        margin-left: 5px;
+    }
+}

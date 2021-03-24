@@ -1,0 +1,20 @@
+.info {
+    display: flex;
+
+    &__indicator {
+        flex: 1 1 auto;
+        text-align: center;
+        padding: $default-spacing;
+
+        &-title {
+            display: block;
+            color: #999;
+        }
+
+        &-value {
+            display: block;
+            color: #eee;
+            font-size: 40px;
+        }
+    }
+}

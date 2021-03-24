@@ -1,0 +1,33 @@
+//colors
+
+$orange: #f80;
+$red: #f00;
+$cyan: #0bb;
+$green: #0a3;
+$blue: #06d;
+$yellow: #ff0;
+$petrol: #08a;
+
+
+$theme-color: $petrol;
+// $dark-background2: #abf;
+$dark-background: #446;
+
+
+$default_main--background-color: $dark-background * 0.4;
+$default_tile--background-color: $dark-background * 0.5;
+
+$default_form-input-field--border-color: $theme-color * 0.7;
+$default_form-input-field--background-color: $dark-background * 0.45; //rgba($theme-color, 0.1);
+
+$default_button--background-color: $dark-background * 0.6;
+// $default_button--background-color: $theme-color;
+$default_button--color: $theme-color;
+$default_button-hover--background-color: $theme-color;
+$default_button-disabled--color: $dark-background;
+
+
+$default_main-content-background-color: linear-gradient($cyan * 0.3, $cyan * 0.1);
+
+
+$default-spacing: 15px;

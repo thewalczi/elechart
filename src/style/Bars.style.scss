@@ -1,0 +1,82 @@
+
+.bar {
+    border-radius: 10px 10px 0 0;
+    &.negative {
+        border-radius: 0 0 10px 10px;
+    }
+}
+
+.bar-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    flex: 1 1 auto;
+    max-width: 150px;
+}
+
+.bar {
+    background: #999;
+    width: 90%;
+    display: inline-block;
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    min-height: 5px;
+    height: 0;
+    opacity: 0.8;
+
+    &:hover {
+        opacity: 1;
+
+        .bar-value-label {
+            display: block;
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 100%;
+            width: 1000px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.5);
+        }
+    }
+
+    &.negative {
+        bottom: auto;
+        top: 100%;
+
+        .only-negatives & {
+            top: 0;
+        }
+
+        .bar-value-label {
+            top: 100%;
+            bottom: auto;
+        }
+        &:hover {
+            &:before {
+                top: 100%;
+            }
+        }
+    }
+
+    &-value-label {
+        display: none;
+        position: absolute;
+        bottom: 100%;
+        color: #ccc;
+        font-size: 11px;
+    }
+}
+
+@for $i from 1 through 3 {
+    .bar-container:nth-child(3n + #{$i}) {
+        .bar {
+            background: $theme-color * ($i * 0.4 + 0.2 / $i);
+        }
+    }
+}
